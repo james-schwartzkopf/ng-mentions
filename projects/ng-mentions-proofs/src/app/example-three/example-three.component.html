@@ -1,0 +1,19 @@
+<textarea type="text" [mentionWatcher]="[peopleList, songList]"></textarea>
+
+<mention-list #peopleList>
+  <ul class="people-list">
+    <li [mentionItem]="'john.lennon'">John Lennon</li>
+    <li [mentionItem]="'paul.mccartney'">Paul McCartney</li>
+    <li [mentionItem]="'george.harrison'">George Harrison</li>
+    <li [mentionItem]="'ringo.starr'">Ringo Starr</li>
+  </ul>
+</mention-list>
+
+<mention-list #songList mentionChar="#">
+  <ul class="song-list">
+    <li [mentionItem]="'come-together'">Come Together</li>
+    <li [mentionItem]="'let-it-be'">Let It Be</li>
+    <li [mentionItem]="'yesterday'">Yesterday</li>
+    <li [mentionItem]="'strawberry-fields'">Strawberry Fields Forever</li>
+  </ul>
+</mention-list>

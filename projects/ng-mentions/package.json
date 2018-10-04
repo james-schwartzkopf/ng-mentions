@@ -1,0 +1,25 @@
+{
+  "name": "ng-mentions",
+  "version": "0.0.1",
+  "description": "Mentions for Angular.",
+  "keywords": [
+    "angular",
+    "mention",
+    "autocomplete"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/james-schwartzkopf/ng-mentions"
+  },
+  "author": "James Schwartzkopf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/james-schwartzkopf/ng-mentions/issues"
+  },
+  "homepage": "https://github.com/james-schwartzkopf/ng-mentions",
+  "peerDependencies": {
+    "@angular/cdk": "^6.0.0",
+    "@angular/common": "^6.0.0",
+    "@angular/core": "^6.0.0"
+  }
+}

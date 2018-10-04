@@ -1,0 +1,26 @@
+textarea {
+  width: 100%;
+}
+
+/* we don't want our product icons streched or rounded */
+.mat-list .mat-list-item .mat-list-icon.product-photo {
+  width: auto;
+  border-radius: 0;
+}
+
+/* needed for [matRipple] */
+.mat-list-item {
+  overflow: hidden;
+  position: relative;
+}
+
+/* make our user images small circles */
+.user-search .user-photo {
+  width: 24px;
+  height: 24px;
+  border-radius: 15px;
+  margin-right: .5rem;
+}
+
+/* See src/styles.scss for additional theme and material SCSS/CSS */
+

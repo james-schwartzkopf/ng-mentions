@@ -1,0 +1,10 @@
+<textarea type="text" [mentionWatcher]="peopleList"></textarea>
+<mention-list #peopleList>
+  <ul class="people-list">
+    <li *ngFor="let person of matches$ | async"
+      [mentionItem]="person.handle"
+    >
+      {{person.name}}
+    </li>
+  </ul>
+</mention-list>

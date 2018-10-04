@@ -1,0 +1,44 @@
+<h3>Content Editable:</h3>
+<div contenteditable="true" #watcher="mentionWatcher"
+  placeholder="Use @ or # to trigger mentions"
+  [mentionWatcher]="[peopleList, productList]"
+>
+</div>
+
+<mention-list #peopleList mentionChar="@">
+  <div class="user-search mat-autocomplete-panel">
+    <!-- TODO allow direct use of mat-option instead of just reusing it's template -->
+    <div
+      *ngFor="let person of matchingPeople$ | async"
+      [mentionItem]="person.name"
+      activeClass="mat-active"
+      class="mat-option"
+      #opt
+    >
+      <img [src]="person.imageUrl" class="user-photo">
+      <span class="mat-option-text">
+        <strong>{{person.name}}<!-- TODO highlight --></strong> &nbsp; <!-- TODO figure out what happened to spacing?? -->
+        <small><em>{{person.bio | words: 5}}</em></small>
+      </span>
+
+      <div class="mat-option-ripple" mat-ripple
+        [matRippleTrigger]="opt">
+      </div>
+    </div>
+  </div>
+</mention-list>
+<mention-list #productList mentionChar="#">
+  <div class="product-search mat-autocomplete-panel">
+    <mat-list>
+      <ng-container *ngFor="let product of matchingProducts$ | async">
+        <mat-list-item [mentionItem]="product.sku" activeClass="mat-active" matRipple>
+          <img matListIcon [src]="product.imageUrl" class="product-photo">
+          <h3 mat-line><strong>{{product.title | words: 5}}<!-- TODO highlight --></strong></h3>
+          <p mat-line>{{product.description | words: 7}}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </mat-list>
+  </div>
+</mention-list>
+<span class="caption small">Mentioned: {{(watcher.activeMention$ | async)?.mention}}</span>

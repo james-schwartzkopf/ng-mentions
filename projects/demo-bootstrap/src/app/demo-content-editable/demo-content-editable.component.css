@@ -1,0 +1,11 @@
+[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+}
+
+[contenteditable=true] {
+  overflow: auto;
+  min-height: 140px;
+}
+
+

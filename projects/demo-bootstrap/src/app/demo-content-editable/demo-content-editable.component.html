@@ -1,0 +1,41 @@
+<h3>Content Editable:</h3>
+<div contenteditable="true" #watcher="mentionWatcher"
+  placeholder="Use @ or # to trigger mentions"
+  class="editor form-control"
+  [mentionWatcher]="[peopleList, productList]"
+>
+</div>
+
+<mention-list #peopleList mentionChar="@">
+  <ul class="list-group user-search">
+    <li
+      *ngFor="let person of matchingPeople$ | async"
+      [mentionItem]="person.name"
+      class="list-group-item list-group-item-action"
+    >
+      <img [src]="person.imageUrl" class="user-photo">
+      <strong>{{person.name}}<!-- TODO highlight --></strong> &nbsp; <!-- TODO figure out what happened to spacing?? -->
+      <small><em>{{person.bio | words: 5}}</em></small>
+    </li>
+  </ul>
+</mention-list>
+<mention-list #productList mentionChar="#">
+  <ul class="list-group product-search demo-scrollable-menu">
+    <li
+      *ngFor="let product of matchingProducts$ | async"
+      [mentionItem]="product.sku"
+      class="list-group-item list-group-item-action"
+    >
+      <div class="row">
+        <div class="col-2 text-center">
+          <img [src]="product.imageUrl" class="product-photo">
+        </div>
+        <div class="col-10">
+          <h4 class="list-group-item-heading">{{product.title | words: 5}}<!-- TODO highlight --></h4>
+          <p class="list-group-item-text">{{product.description | words: 7}}</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+</mention-list>
+<span class="caption small">Mentioned: {{(watcher.activeMention$ | async)?.mention}}</span>
